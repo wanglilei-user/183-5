@@ -1,0 +1,91 @@
+create database table1835;
+mysql> use table1835 ;
+Database changed
+mysql> create table addressbook
+    -> (
+    -> name char(20),
+    -> address char(20),
+    -> unit char(20),
+    -> phone char(20),
+    -> QQ char(20),
+    -> email char(20),
+    -> category char(20)
+    -> );
+Query OK, 0 rows affected (1.41 sec)
+
+
+mysql> insert into addressbook value('wanglilei','shandong','renshi','15646','4454','1454','friend');
+Query OK, 1 row affected (0.74 sec)
+
+mysql> insert into addressbook value('mamingxin','shanghai','xuanchuan','144846','1454','2254','colleague');
+Query OK, 1 row affected (0.64 sec)
+
+mysql> insert into addressbook value('wangwei','beijing','ziyuan','15456','96564','545454','boss');
+Query OK, 1 row affected (0.23 sec)
+mysql> use group1835;
+Database changed
+
+mysql> insert into addressbook value('fuyi','shandong','xuanchuan','56546','45546','5649','friend');
+Query OK, 1 row affected (0.81 sec)
+
+mysql> insert into addressbook value('luoer','beijing','renshi','476558','11666','9413','colleague');
+Query OK, 1 row affected (0.51 sec)
+
+mysql> insert into addressbook value('tangsan','tianjin','xuanchuan','44448','178666','9783','colleague');
+Query OK, 1 row affected (0.53 sec)
+
+mysql> select*from addressbook;
++-----------+--------+-----------+--------+--------+--------+--------+
+| 姓名      | 住址   | 单位      | 电话   | QQ     | email  | 分类   |
++-----------+--------+-----------+--------+--------+--------+--------+
+| 王立雷    | 山东   | 人事部    | 15646  | 4454   | 1454   | 朋友   |
+| 马明鑫    | 上海   | 宣传部    | 144846 | 1454   | 2254   | 同事   |
+| 王伟      | 北京   | 资源部    | 15456  | 96564  | 545454 | 老板   |
+| 付一      | 山东   | 宣传部    | 56546  | 45546  | 5649   | 朋友   |
+| 骆二      | 北京   | 人事部    | 476558 | 11666  | 9413   | 同事   |
+| 唐三      | 天津   | 宣传部    | 44448  | 178666 | 9783   | 同事   |
++-----------+--------+-----------+--------+--------+--------+--------+
+6 rows in set (0.00 sec)
+mysql> select 电话 from 个人通讯录表 where 姓名='王立雷';
++--------+
+| 电话   |
++--------+
+| 15646  |
++--------+
+1 row in set (0.00 sec)
+mysql> select QQ from 个人通讯录表 where 姓名='王伟';
++-------+
+| QQ    |
++-------+
+| 96564 |
++-------+
+1 row in set (0.00 sec)
+mysql> delete from 个人通讯录表 where 姓名='唐三';
+Query OK, 1 row affected (0.59 sec)
+
+mysql> select*from 个人通讯录表;
++-----------+--------+-----------+--------+-------+--------+--------+
+| 姓名      | 住址   | 单位      | 电话   | QQ    | email  | 分类   |
++-----------+--------+-----------+--------+-------+--------+--------+
+| 王立雷    | 山东   | 人事部    | 15646  | 4454  | 1454   | 朋友   |
+| 马明鑫    | 上海   | 宣传部    | 144846 | 1454  | 2254   | 同事   |
+| 王伟      | 北京   | 资源部    | 15456  | 96564 | 545454 | 老板   |
+| 付一      | 山东   | 宣传部    | 56546  | 45546 | 5649   | 朋友   |
+| 骆二      | 北京   | 人事部    | 476558 | 11666 | 9413   | 同事   |
++-----------+--------+-----------+--------+-------+--------+--------+
+5 rows in set (0.00 sec)
+mysql> update 个人通讯录表 set email=659465 where 姓名='马明鑫';
+Query OK, 1 row affected (0.64 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from 个人通讯录表;
++-----------+--------+-----------+--------+-------+--------+--------+
+| 姓名      | 住址   | 单位      | 电话   | QQ    | email  | 分类   |
++-----------+--------+-----------+--------+-------+--------+--------+
+| 王立雷    | 山东   | 人事部    | 15646  | 4454  | 1454   | 朋友   |
+| 马明鑫    | 上海   | 宣传部    | 144846 | 1454  | 659465 | 同事   |
+| 王伟      | 北京   | 资源部    | 15456  | 96564 | 545454 | 老板   |
+| 付一      | 山东   | 宣传部    | 56546  | 45546 | 5649   | 朋友   |
+| 骆二      | 北京   | 人事部    | 476558 | 11666 | 9413   | 同事   |
++-----------+--------+-----------+--------+-------+--------+--------+
+5 rows in set (0.00 sec)
